@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Menu</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  {% include 'scripts_include.html' %}
+</head>
+<body id="manage_menu">
+  <div class="container">
+    <!-- Top Bar -->
+    <div class="container topbar">
+      <h1 class="nav-title">Manage Menu</h1>
+      <div class="nav-links">
+        <a href="{{ url_for('order.manage_order') }}" class="btn btn-secondary">Place Orders</a>
+        <a href="{{ url_for('order.home') }}" class="btn btn-primary">Home</a>
+      </div>
+    </div>
+
+    <div class="row mt-2-custom">
+      <!-- Hierarchical Menu Display -->
+      <div class="col">
+        <h3>Menu Structure</h3>
+        <div id="menu-structure">
+          <!-- Hierarchical structure will be dynamically rendered here -->
+        </div>
+        <button class="btn-primary full-width" id="refreshStructureBtn">Refresh Structure</button>
+      </div>
+      <!-- Management Panel -->
+      <div class="col">
+        <h3>Manage Menu Levels</h3>
+        <button class="btn-primary full-width" id="addMainGroupBtn">Add Main Group</button>
+        <button class="btn-primary full-width" id="addSubGroupBtn">Add Subgroup</button>
+        <button class="btn-primary full-width" id="addMenuItemBtn">Add Menu Item</button>
+        <button class="btn-primary full-width" id="addAddOnBtn">Add Add-On</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals for each level -->
+
+  <!-- Main Group Modal -->
+  <div id="mainGroupFormContainer" class="modal d-flex justify-center align-center">
+    <div class="modal-content">
+      <span class="btn-close" id="closeMainGroupForm">&times;</span>
+      <h2 class="text-center" id="mainGroupModalTitle">Add Main Group</h2>
+      <form id="mainGroupForm">
+        <div class="form-group">
+          <label for="mainGroupName">Main Group Name</label>
+          <input type="text" id="mainGroupName" placeholder="Enter main group name" required>
+        </div>
+        <button type="submit" id="mainGroupSubmitButton" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Subgroup Modal -->
+  <div id="subGroupFormContainer" class="modal d-flex justify-center align-center">
+    <div class="modal-content">
+      <span class="btn-close" id="closeSubGroupForm">&times;</span>
+      <h2 class="text-center" id="subGroupModalTitle">Add Subgroup</h2>
+      <form id="subGroupForm">
+        <div class="form-group">
+          <label for="subGroupName">Subgroup Name</label>
+          <input type="text" id="subGroupName" placeholder="Enter subgroup name" required>
+        </div>
+        <div class="form-group">
+          <label for="parentMainGroup">Parent Main Group</label>
+          <select id="parentMainGroup">
+            <option value="">Select Main Group</option>
+          </select>
+        </div>
+        <button type="submit" id="subGroupSubmitButton" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Menu Item Modal -->
+  <div id="menuItemFormContainer" class="modal d-flex justify-center align-center">
+    <div class="modal-content">
+      <span class="btn-close" id="closeMenuItemForm">&times;</span>
+      <h2 class="text-center" id="menuItemModalTitle">Add Menu Item</h2>
+      <form id="menuItemForm">
+        <div class="form-group">
+          <label for="menuItemName">Item Name</label>
+          <input type="text" id="menuItemName" placeholder="Enter item name" required>
+        </div>
+        <div class="form-group">
+          <label for="menuItemPrice">Price (£)</label>
+          <input type="number" id="menuItemPrice" placeholder="Enter price" required>
+        </div>
+        <div class="form-group">
+          <label for="parentSubGroup">Parent Subgroup</label>
+          <select id="parentSubGroup">
+            <option value="">Select Subgroup</option>
+          </select>
+        </div>
+        <button type="submit" id="menuItemSubmitButton" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add-On Modal -->
+  <div id="addOnFormContainer" class="modal d-flex justify-center align-center">
+    <div class="modal-content">
+      <span class="btn-close" id="closeAddOnForm">&times;</span>
+      <h2 class="text-center" id="addOnModalTitle">Add Add-On</h2>
+      <form id="addOnForm">
+        <div class="form-group">
+          <label for="addOnName">Add-On Name</label>
+          <input type="text" id="addOnName" placeholder="Enter add-on name" required>
+        </div>
+        <div class="form-group">
+          <label for="addOnPrice">Price (£)</label>
+          <input type="number" id="addOnPrice" placeholder="Enter price" required>
+        </div>
+        <div class="form-group">
+          <label for="parentMenuItem">Parent Menu Item</label>
+          <select id="parentMenuItem">
+            <option value="">Select Menu Item</option>
+          </select>
+        </div>
+        <button type="submit" id="addOnSubmitButton" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/manage_menu.js') }}"></script>
+</body>
+</html>

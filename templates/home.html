@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="container text-center">
+        <h1>Welcome to the Café POS System</h1>
+        <div class="card-container">
+            <a href="{{ url_for('order.manage_order') }}" class="feature-card">
+                <h2>Place Order</h2>
+                <p>Create and manage customer orders quickly.</p>
+            </a>
+            
+            <a href="{{ url_for('menu.manage_menu') }}" class="feature-card">
+                <h2>Manage Menu</h2>
+                <p>Add, edit, or remove menu items.</p>
+            </a>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+</body>
+</html>

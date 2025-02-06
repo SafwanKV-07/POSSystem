@@ -1,0 +1,56 @@
+/* ===== Base Variables for a Professional POS System ===== */
+:root {
+    /* Color Palette - Warm & Inviting */
+    --primary-color: #6F4E37;   /* Coffee Brown - Primary Buttons & Headers */
+    --secondary-color: #DCCCA3; /* Soft Sand - Backgrounds */
+    --accent-color: #9CAF88;    /* Sage Green - Highlights */
+    --success-color: #28A745;   /* Green - Success Messages */
+    --danger-color: #D9534F;    /* Soft Red - Error/Alerts */
+    --warning-color: #E1AD01;   /* Mustard Yellow - Warnings */
+    --light-color: #FAF9F6;     /* Ivory - Backgrounds */
+    --dark-color: #333333;      /* Charcoal - Text */
+
+    /* Typography */
+    --font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    --font-size-base: 16px;
+    --font-size-heading: 24px;
+
+    /* Spacing & Layout */
+    --base-padding: 12px;
+    --base-margin: 12px;
+    --base-border-radius: 8px;
+    --base-transition: 0.3s ease-in-out;
+
+    /* Shadows for Depth */
+    --box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Base Elements ===== */
+body {
+    background-color: var(--light-color);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    color: var(--dark-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--base-margin);
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: var(--base-margin);
+    color: var(--primary-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--base-transition);
+}
+
+a:hover {
+    color: var(--dark-color);
+}
