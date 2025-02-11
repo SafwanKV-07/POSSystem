@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe POS</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafe POS - Order Management</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <!-- You might include additional scripts here if needed -->
 </head>
 <body>
-    <div class="container">
-        <!-- Top Bar -->
-        <div class="container topbar">            
-            <h1 class="nav-title">Order Management</h1>
-            <div class="nav-links">
-                <a href="{{ url_for('menu.manage_menu') }}" class="btn btn-secondary">Manage Menu</a>
-                <a href="{{ url_for('order.home') }}" class="btn btn-primary">Home</a>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="row">
-            <div class="sidebar">
-                {% include 'sidebar.html' %}
-            </div>
-            <!-- Menu Items - Edit to make it dynamic -->
-            <div class="col">
-                <h2>Order Management</h2>
-                <div class="text-center">
-                    <h5>Categories</h5>
-                    <button class="btn btn-secondary">Burgers</button>
-                    <button class="btn btn-secondary">Drinks</button>
-                </div>
-                <p class="text-center">Please select a category to view menu items.</p>
-            </div>
-        </div>
+  <div class="container">
+    <!-- Top Bar -->
+    <div class="container topbar">
+      <h1 class="nav-title">Order Management</h1>
+      <div class="nav-links">
+        <a href="{{ url_for('menu.manage_menu') }}" class="btn btn-secondary">Manage Menu</a>
+        <a href="{{ url_for('order.home') }}" class="btn btn-primary">Home</a>
+      </div>
     </div>
-    {% include 'footer.html' %}
+
+    <!-- Main Content Area -->
+    <div class="row">
+      <!-- Sidebar (order summary) -->
+      <div class="sidebar">
+        {% include 'sidebar.html' %}
+      </div>
+      <!-- Order Items Section -->
+      <div class="col">
+        <h2>Place Your Order</h2>
+        <!-- Category Buttons Container (Horizontal Scrolling) -->
+        <div id="order-categories" class="category-container" style="overflow-x: auto; white-space: nowrap; padding-bottom: 10px;">
+          <!-- Categories will be dynamically rendered here -->
+        </div>
+        <!-- Items Container -->
+        <div id="order-items" class="items-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <!-- Menu items will be dynamically rendered here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'footer.html' %}
+  <!-- Include the new order.js script -->
+  <script src="{{ url_for('static', filename='js/order.js') }}"></script>
 </body>
 </html>

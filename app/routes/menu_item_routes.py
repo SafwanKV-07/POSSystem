@@ -11,11 +11,21 @@ def add_menu_item():
         name = data.get("name", "").strip()
         price = data.get("price")
         sub_group_id = data.get("sub_group_id")
+        upgradable = data.get("upgradable", False)
+        upgrade_drink_price = data.get("upgrade_drink_price")
+        upgrade_side_price = data.get("upgrade_side_price")
         if not name or price is None or not sub_group_id:
             return jsonify({"error": "Name, price and subgroup id are required"}), 400
         if not SubGroup.query.get(sub_group_id):
             return jsonify({"error": "Subgroup not found"}), 404
-        new_item = MenuItem(name=name, price=price, sub_group_id=sub_group_id)
+        new_item = MenuItem(
+            name=name,
+            price=price,
+            sub_group_id=sub_group_id,
+            upgradable=upgradable,
+            upgrade_drink_price=upgrade_drink_price,
+            upgrade_side_price=upgrade_side_price,
+        )
         db.session.add(new_item)
         db.session.commit()
         return (

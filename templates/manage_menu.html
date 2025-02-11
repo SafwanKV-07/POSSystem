@@ -88,13 +88,28 @@
         </div>
         <div class="form-group">
           <label for="menuItemPrice">Price (£)</label>
-          <input type="number" id="menuItemPrice" placeholder="Enter price" required>
+          <input type="number" step="0.01" id="menuItemPrice" placeholder="Enter price" required>
         </div>
         <div class="form-group">
           <label for="parentSubGroup">Parent Subgroup</label>
           <select id="parentSubGroup">
             <option value="">Select Subgroup</option>
           </select>
+        </div>
+        <!-- New Upgrade to Meal Option -->
+        <div class="form-group">
+          <input type="checkbox" id="menuItemUpgradable">
+          <label for="menuItemUpgradable">Offer Upgrade to Meal</label>
+        </div>
+        <div id="upgradeOptions" style="display: none;">
+          <div class="form-group">
+            <label for="upgradeDrinkPrice">Upgrade Drink Price (£)</label>
+            <input type="number" step="0.01" id="upgradeDrinkPrice" placeholder="Enter drink price">
+          </div>
+          <div class="form-group">
+            <label for="upgradeSidePrice">Upgrade Side Price (£)</label>
+            <input type="number" step="0.01" id="upgradeSidePrice" placeholder="Enter side price">
+          </div>
         </div>
         <button type="submit" id="menuItemSubmitButton" class="btn btn-primary">Save</button>
       </form>
@@ -113,7 +128,7 @@
         </div>
         <div class="form-group">
           <label for="addOnPrice">Price (£)</label>
-          <input type="number" id="addOnPrice" placeholder="Enter price" required>
+          <input type="number" step="0.01" id="addOnPrice" placeholder="Enter price" required>
         </div>
         <div class="form-group">
           <label for="parentMenuItem">Parent Menu Item</label>
@@ -125,7 +140,39 @@
       </form>
     </div>
   </div>
-
-  <script src="{{ url_for('static', filename='js/manage_menu.js') }}"></script>
+  <!-- Meal Upgrade Modal -->
+  <div id="mealUpgradeFormContainer" class="modal d-flex justify-center align-center">
+    <div class="modal-content">
+      <span class="btn-close" id="closeMealUpgradeForm">&times;</span>
+      <h2 class="text-center" id="mealUpgradeModalTitle">Add Meal Upgrade Option</h2>
+      <form id="mealUpgradeForm">
+        <!-- Hidden field to store the menu item id -->
+        <input type="hidden" id="mealUpgradeMenuItemId">
+        <div class="form-group">
+          <label for="mealUpgradeDrinkSelect">Select Drink</label>
+          <select id="mealUpgradeDrinkSelect">
+            <option value="">Select Drink</option>
+            <!-- Options to be populated dynamically from the Drinks main group -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mealUpgradeDrinkPrice">Custom Drink Price (£)</label>
+          <input type="number" step="0.01" id="mealUpgradeDrinkPrice" placeholder="Enter custom drink price">
+        </div>
+        <div class="form-group">
+          <label for="mealUpgradeSideSelect">Select Side</label>
+          <select id="mealUpgradeSideSelect">
+            <option value="">Select Side</option>
+            <!-- Options to be populated dynamically from the Sides main group -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mealUpgradeSidePrice">Custom Side Price (£)</label>
+          <input type="number" step="0.01" id="mealUpgradeSidePrice" placeholder="Enter custom side price">
+        </div>
+        <button type="submit" id="mealUpgradeSubmitButton" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
